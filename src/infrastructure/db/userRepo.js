@@ -13,7 +13,7 @@ module.exports = {
     data: {
       id: user.id,
       firstName: user.firstName, lastName: user.lastName, dni: user.dni,
-      phone: user.phone, address: user.address,
+      phone: user.phone, address: user.address, cardNumber: user.cardNumber,
       email: user.email, passwordHash: user.passwordHash,
       isEmailVerified: user.isEmailVerified,
       emailVerificationToken: user.emailVerificationToken,

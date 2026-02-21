@@ -2,7 +2,7 @@
 const crypto = require('crypto');
 
 class User {
-  constructor({ id, firstName, lastName, dni, phone, address, email, passwordHash,
+  constructor({ id, firstName, lastName, dni, phone, address, cardNumber, email, passwordHash,
     isEmailVerified = false, emailVerificationToken = null,
     emailVerificationTokenExpiresAt = null, createdAt = new Date(), updatedAt = new Date() }) {
     this.id = id;
@@ -11,6 +11,7 @@ class User {
     this.dni = dni;
     this.phone = phone;
     this.address = address;
+    this.cardNumber = cardNumber;
     this.email = email;
     this.passwordHash = passwordHash;
     this.isEmailVerified = isEmailVerified;
@@ -20,10 +21,10 @@ class User {
     this.updatedAt = updatedAt;
   }
 
-  static create({ firstName, lastName, dni, phone, address, email, passwordHash }) {
+  static create({ firstName, lastName, dni, phone, address, cardNumber, email, passwordHash }) {
     return new User({
       id:                              crypto.randomUUID(),
-      firstName, lastName, dni, phone, address,
+      firstName, lastName, dni, phone, address, cardNumber,
       email:                           email.toLowerCase().trim(),
       passwordHash,
       emailVerificationToken:          crypto.randomBytes(32).toString('hex'),

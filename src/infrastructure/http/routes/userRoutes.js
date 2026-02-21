@@ -12,10 +12,10 @@ const fail = (err, res) => res.status(err.status || 500).json({ error: err.messa
 const router = Router();
 
 router.post('/register', async (req, res) => {
-  const { firstName, lastName, dni, phone, address, email, password } = req.body ?? {};
-  if (!firstName || !lastName || !dni || !phone || !address || !email || !password)
+  const { firstName, lastName, dni, phone, address, cardNumber, email, password } = req.body ?? {};
+  if (!firstName || !lastName || !dni || !phone || !address || !cardNumber || !email || !password)
     return res.status(400).json({ error: 'Todos los campos son requeridos' });
-  try { return res.status(201).json(await register({ firstName, lastName, dni, phone, address, email, password })); }
+  try { return res.status(201).json(await register({ firstName, lastName, dni, phone, address, cardNumber, email, password })); }
   catch (err) { return fail(err, res); }
 });
 
